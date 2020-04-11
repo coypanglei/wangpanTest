@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainSort_name"
+        android:title="@string/nameLabel" />
+
+    <item
+        android:id="@+id/mainSort_status"
+        android:checked="true"
+        android:title="@string/status" />
+
+    <item
+        android:id="@+id/mainSort_progress"
+        android:title="@string/progress" />
+
+    <item
+        android:id="@+id/mainSort_downloadSpeed"
+        android:title="@string/downloadSpeed" />
+
+    <item
+        android:id="@+id/mainSort_uploadSpeed"
+        android:title="@string/uploadSpeed" />
+
+    <item
+        android:id="@+id/mainSort_length"
+        android:title="@string/totalLengthLabel" />
+
+    <item
+        android:id="@+id/mainSort_completedLength"
+        android:title="@string/completedLengthLabel" />
+</menu>

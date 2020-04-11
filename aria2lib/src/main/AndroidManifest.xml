@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gianlu.aria2lib">
+
+    <!-- Save downloads -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Foreground service on Android P+ -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:extractNativeLibs="true"
+        android:requestLegacyExternalStorage="true">
+        <service
+            android:name=".internal.Aria2Service"
+            android:enabled="true" />
+
+        <activity
+            android:name="com.gianlu.aria2lib.ui.ConfigEditorActivity"
+            android:configChanges="uiMode" />
+    </application>
+</manifest>

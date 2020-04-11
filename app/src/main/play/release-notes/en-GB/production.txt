@@ -1,0 +1,2 @@
+### Fixed
+- Fixed crash at startup due to invalid font

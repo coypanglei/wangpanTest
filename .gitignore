@@ -1,0 +1,13 @@
+*.iml
+*.apk
+.gradle
+.idea
+local.properties
+.DS_Store
+/build
+/app/build
+captures
+Thumbs.db
+/app/**/release/
+google-services.json
+!/app/src/foss/google-services.json

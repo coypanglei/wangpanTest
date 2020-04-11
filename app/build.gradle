@@ -1,0 +1,114 @@
+plugins {
+    id 'com.github.triplet.play' version '2.5.0'
+}
+
+apply plugin: 'com.android.application'
+
+
+def isTravis = System.getenv("CI") == "true"
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.gianlu.aria2app"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 205
+        versionName "5.6.6"
+    }
+
+    if (isTravis) {
+        signingConfigs {
+            release {
+                storeFile file("../.travis/keystore.jks")
+                storePassword System.getenv("keystore_storePsswd")
+                keyAlias = System.getenv("keystore_keyAlias")
+                keyPassword System.getenv("keystore_keyPsswd")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (isTravis) signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions 'main'
+    productFlavors {
+        standard {
+            dimension 'main'
+
+            buildTypes {
+                release {
+                    minifyEnabled true
+                    shrinkResources true
+                }
+            }
+        }
+
+        foss {
+            dimension 'main'
+
+            buildTypes {
+                release {
+                    minifyEnabled false
+                    shrinkResources false
+                }
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        warning 'MissingTranslation'
+    }
+
+    playConfigs {
+        foss {
+            commit = false
+            enabled = false
+        }
+    }
+}
+
+play {
+    defaultToAppBundles = true
+    enabled = isTravis
+    serviceAccountCredentials = file("../.travis/secrets.json")
+    track = "production"
+    releaseStatus = "draft"
+}
+
+dependencies {
+    implementation project(':CommonUtils')
+    implementation project(':aria2lib')
+
+    implementation 'androidx.tonyodev.fetch2:xfetch2:3.1.4'
+    implementation 'androidx.tonyodev.fetch2okhttp:xfetch2okhttp:3.1.4'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    implementation 'org.apmem.tools:layouts:1.10@aar'
+    implementation 'com.github.devgianlu:Android--Library-Country-Flags:6fc6059f91'
+
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+}
+
+task printVersionName {
+    doLast {
+        println android.defaultConfig.versionName
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'

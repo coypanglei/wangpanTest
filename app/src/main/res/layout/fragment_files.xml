@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <com.gianlu.commonutils.misc.BreadcrumbsView
+            android:id="@+id/filesFragment_breadcrumbs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:arrowRes="@drawable/baseline_keyboard_arrow_right_24"
+            app:color="?colorOnSurface" />
+    </HorizontalScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="top"
+            android:background="@drawable/shadow_bottom" />
+
+        <com.gianlu.commonutils.misc.RecyclerMessageView
+            android:id="@+id/filesFragment_rmv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+    </FrameLayout>
+</LinearLayout>

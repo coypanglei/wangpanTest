@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions 'main'
+    productFlavors {
+        foss {
+            dimension 'main'
+        }
+
+        standard {
+            dimension 'main'
+        }
+    }
+
+    lintOptions {
+        warning 'MissingTranslation'
+    }
+}
+
+dependencies {
+    implementation(project(':CommonUtils')) {
+        exclude group: 'me.toptas.fancyshowcase'
+    }
+
+    api 'com.github.devgianlu.MaterialPreferences:lovelyinput:a708da533d'
+
+    api 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    api 'com.google.android.material:material:1.2.0-alpha04'
+}
+
+task compileAria2 {
+    doFirst {
+        def basePath = "$buildFile.parent/src/main/jniLibs/"
+        def libs = [basePath + "armeabi-v7a/libaria2c.so", basePath + "arm64-v8a/libaria2c.so",
+                    basePath + "x86/libaria2c.so", basePath + "x86_64/libaria2c.so"]
+
+        if (!project.hasProperty('force')) {
+            def ok = true
+            for (lib in libs) {
+                if (!file(lib).exists())
+                    ok = false
+            }
+
+            if (ok) {
+                println 'aria2c binaries are already present.'
+                return
+            }
+        }
+
+        println 'Missing (or forced) aria2c binaries, will build them now.'
+        delete(basePath)
+
+        exec {
+            executable "chmod"
+            args "+x", "$buildFile.parent/build_aria2c.sh"
+        }
+
+        def result = exec {
+            executable "$buildFile.parent/build_aria2c.sh"
+            args "47f378eba150fe62b1ba824e8ad1099cee51cea8"
+        }
+
+        assert result.exitValue == 0
+
+        for (arch in ["armeabi-v7a", "arm64-v8a", "x86", "x86_64"]) {
+            copy {
+                from("$buildFile.parent/aria2-android/bin/" + arch + "/bin/aria2c")
+                into(basePath + arch)
+                rename "aria2c", "libaria2c.so"
+            }
+        }
+
+        delete("$buildFile.parent/aria2-android")
+        println("Done building aria2c binaries!")
+    }
+}
+preBuild.dependsOn compileAria2

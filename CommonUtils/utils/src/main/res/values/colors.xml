@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary" />
+    <color name="colorPrimaryVariant" />
+    <color name="colorOnPrimary" />
+    <color name="colorSecondary" />
+    <color name="colorSecondaryVariant" />
+    <color name="colorOnSecondary" />
+
+    <!-- {@deprecated Use `@color/colorSecondary` instead.} -->
+    <color name="colorAccent">@color/colorSecondary</color>
+    <!-- {@deprecated Use `@color/colorPrimaryVariant` instead.} -->
+    <color name="colorPrimaryDark">@color/colorPrimaryVariant</color>
+
+    <!-- Not required by the Material Theme -->
+    <color name="colorPrimaryTranslucent" />
+    <color name="colorSecondaryTranslucent" />
+
+    <color name="logLevel_info">@android:color/black</color>
+    <color name="logLevel_warn">@color/amber</color>
+    <color name="logLevel_error">@color/red</color>
+
+    <!-- MaterialDatePickerDialog -->
+    <color name="materialDatePickerDialog_background">@color/colorSecondary</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="red">#f44336</color>
+    <color name="pink">#e91e63</color>
+    <color name="purple">#9c27b0</color>
+    <color name="deepPurple">#673ab7</color>
+    <color name="indigo">#3f51b5</color>
+    <color name="blue">#2196f3</color>
+    <color name="lightBlue">#03a9f4</color>
+    <color name="cyan">#00bcd4</color>
+    <color name="teal">#009688</color>
+    <color name="green">#4caf50</color>
+    <color name="lightGreen">#8bc34a</color>
+    <color name="lime">#cddc39</color>
+    <color name="yellow">#ffeb3b</color>
+    <color name="amber">#ffc107</color>
+    <color name="orange">#ff9800</color>
+    <color name="deepOrange">#ff5722</color>
+    <color name="brown">#795548</color>
+</resources>

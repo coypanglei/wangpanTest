@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="12dp"
+    android:paddingTop="0dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="16dp">
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/peerSheet_chart"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp" />
+
+    <com.gianlu.commonutils.misc.SuperTextView
+        android:id="@+id/peerSheet_seeder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gianlu.commonutils.misc.SuperTextView
+        android:id="@+id/peerSheet_peerChoking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gianlu.commonutils.misc.SuperTextView
+        android:id="@+id/peerSheet_amChoking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gianlu.commonutils.misc.SuperTextView
+        android:id="@+id/peerSheet_peerId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gianlu.commonutils.misc.SuperTextView
+        android:id="@+id/peerSheet_health"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gianlu.aria2app.api.geolocalization.IPDetailsView
+        android:id="@+id/peerSheet_ipDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.gianlu.aria2app.adapters.BitfieldVisualizer
+        android:id="@+id/peerSheet_bitfield"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

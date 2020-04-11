@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingEnd="12dp"
+    android:paddingStart="12dp"
+    android:paddingTop="0dp">
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/serverSheet_chart"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp" />
+
+    <com.gianlu.commonutils.misc.SuperTextView
+        android:id="@+id/serverSheet_currentUri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gianlu.commonutils.misc.SuperTextView
+        android:id="@+id/serverSheet_uri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.gianlu.aria2app.api.geolocalization.IPDetailsView
+        android:id="@+id/serverSheet_ipDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+</LinearLayout>
