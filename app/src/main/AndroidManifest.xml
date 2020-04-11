@@ -850,7 +850,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullBlackNight"
             android:windowSoftInputMode="stateHidden" />
-
+        <activity
+            android:name=".activities.VideoActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:screenOrientation="portrait" />
         <!-- In-App downloader custom options activity -->
         <activity
             android:name="com.gianlu.aria2lib.ui.ConfigEditorActivity"

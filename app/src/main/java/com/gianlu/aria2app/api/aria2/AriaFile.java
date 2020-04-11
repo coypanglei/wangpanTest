@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -17,7 +18,7 @@ import java.util.Objects;
 
 import okhttp3.HttpUrl;
 
-public class AriaFile {
+public class AriaFile implements Serializable {
     public final long completedLength;
     public final long length;
     public final String path;

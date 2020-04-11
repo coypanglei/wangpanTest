@@ -24,7 +24,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.gianlu.aria2app.PK;
 import com.gianlu.aria2app.R;
 import com.gianlu.aria2app.Utils;
+import com.gianlu.aria2app.activities.AddMetalinkActivity;
 import com.gianlu.aria2app.activities.DirectDownloadActivity;
+import com.gianlu.aria2app.activities.VideoActivity;
 import com.gianlu.aria2app.activities.moreabout.BigUpdateProvider;
 import com.gianlu.aria2app.activities.moreabout.OnBackPressed;
 import com.gianlu.aria2app.api.AbstractClient;
@@ -153,7 +155,15 @@ public class FilesFragment extends UpdaterFragment<DownloadWithUpdate.BigUpdate>
     @Override
     public void onFileSelected(@NonNull AriaFile file) {
         fileSheet = FileSheet.get();
-        fileSheet.show(getActivity(), download, file, this);
+//        fileSheet.show(getActivity(), download, file, this);
+        startAndAdd(getActivity(), file.path);
+        Log.e("file.path",file.uris.toString());
+
+    }
+
+    private void startAndAdd(Context context, String file) {
+        context.startActivity(new Intent(context, VideoActivity.class)
+                .putExtra("file", file));
     }
 
     @Override
