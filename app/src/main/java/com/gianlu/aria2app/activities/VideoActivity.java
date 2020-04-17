@@ -56,7 +56,7 @@ public class VideoActivity extends UpdaterActivity {
                 .setAutoFullWithSize(true)
                 .setShowFullAnimation(false)
                 .setNeedLockFull(true)
-                .setUrl("https://tudou.diediao-kuyun.com/20200315/13146_3eb35ea0/index.m3u8")
+                .setUrl("file://"+path)
                 .setCacheWithPlay(false)
                 .setVideoTitle("测试视频")
                 .setVideoAllCallBack(new GSYSampleCallBack() {
